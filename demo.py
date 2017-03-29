@@ -1,3 +1,6 @@
+#The optimal values of m and b can be actually calculated with way less effort than doing a linear regression. 
+#this is just to demonstrate gradient descent
+
 from numpy import *
 # y = mx + b
 # m is slope, b is y-intercept
