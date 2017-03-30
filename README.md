@@ -25,7 +25,7 @@ Python 2 and 3 both work for this. Use [pip](https://pip.pypa.io/en/stable/) to 
 
 ## Usage
 
-Just run ``python3 demo.py`` to see the results:
+Just run ``python demo.py`` to see the results:
 
    ```
 Starting gradient descent at b = 0, m = 0, error = 5565.107834483211
