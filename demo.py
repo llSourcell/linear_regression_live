@@ -2,10 +2,17 @@
 from numpy import genfromtxt, mean
 
 # reading csv file as an array
-points = genfromtxt("data.csv", delimiter=",")
+points = genfromtxt("C:\\Users\\saimanoj\\Downloads\\data.csv", delimiter=",")
 
 # initialising intercept and slope values as 0
 intercept, slope = 0, 0
+
+# printing initial output values one by one
+print("\nInitially..,")
+print("intercept =", intercept)
+print("slope =", slope)
+print("error =", mean(
+    (points[:, 1] - (slope * points[:, 0] + intercept)) ** 2))
 
 # itteration count to 10 times the length of data set
 num_iterations = len(points) * 10
@@ -25,8 +32,9 @@ for i in range(num_iterations):
     # using that average change to adjust slope
     slope += (avg_change * sum(points[:, 0])) * learning_rate
 
-# printing output values one by one
+# printing final output values one by one
+print("\nAfter 1000 itterations..,")
 print("intercept =", intercept)
-print("m =", slope)
+print("slope =", slope)
 print("error =", mean(
     (points[:, 1] - (slope * points[:, 0] + intercept)) ** 2))
