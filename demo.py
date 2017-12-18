@@ -1,48 +1,32 @@
-#The optimal values of m and b can be actually calculated with way less effort than doing a linear regression. 
-#this is just to demonstrate gradient descent
+# genfromtxt will read csv as array & mean will calculate average
+from numpy import genfromtxt, mean
 
-from numpy import *
+# reading csv file as an array
+points = genfromtxt("data.csv", delimiter=",")
 
-# y = mx + b
-# m is slope, b is y-intercept
-def compute_error_for_line_given_points(b, m, points):
-    totalError = 0
-    for i in range(0, len(points)):
-        x = points[i, 0]
-        y = points[i, 1]
-        totalError += (y - (m * x + b)) ** 2
-    return totalError / float(len(points))
+# initialising intercept and slope values as 0
+intercept, slope = 0, 0
 
-def step_gradient(b_current, m_current, points, learningRate):
-    b_gradient = 0
-    m_gradient = 0
-    N = float(len(points))
-    for i in range(0, len(points)):
-        x = points[i, 0]
-        y = points[i, 1]
-        b_gradient += -(2/N) * (y - ((m_current * x) + b_current))
-        m_gradient += -(2/N) * x * (y - ((m_current * x) + b_current))
-    new_b = b_current - (learningRate * b_gradient)
-    new_m = m_current - (learningRate * m_gradient)
-    return [new_b, new_m]
+# itteration count to 10 times the length of data set
+num_iterations = len(points) * 10
 
-def gradient_descent_runner(points, starting_b, starting_m, learning_rate, num_iterations):
-    b = starting_b
-    m = starting_m
-    for i in range(num_iterations):
-        b, m = step_gradient(b, m, array(points), learning_rate)
-    return [b, m]
+# learning rate to 100th of data set size
+learning_rate = 1 / (num_iterations * 10)
 
-def run():
-    points = genfromtxt("data.csv", delimiter=",")
-    learning_rate = 0.0001
-    initial_b = 0 # initial y-intercept guess
-    initial_m = 0 # initial slope guess
-    num_iterations = 1000
-    print "Starting gradient descent at b = {0}, m = {1}, error = {2}".format(initial_b, initial_m, compute_error_for_line_given_points(initial_b, initial_m, points))
-    print "Running..."
-    [b, m] = gradient_descent_runner(points, initial_b, initial_m, learning_rate, num_iterations)
-    print "After {0} iterations b = {1}, m = {2}, error = {3}".format(num_iterations, b, m, compute_error_for_line_given_points(b, m, points))
+# running the loop for 10x the length of data to generate accurate slope and intercept
+for i in range(num_iterations):
+    # calculating average change in values when compared with predected and actual values
+    avg_change = mean(2 / len(points) *
+                      (points[:, 1] - (slope * points[:, 0]) + intercept))
 
-if __name__ == '__main__':
-    run()
+    # using that average change to adjust intercept
+    intercept += avg_change * learning_rate
+
+    # using that average change to adjust slope
+    slope += (avg_change * sum(points[:, 0])) * learning_rate
+
+# printing output values one by one
+print("intercept =", intercept)
+print("m =", slope)
+print("error =", mean(
+    (points[:, 1] - (slope * points[:, 0] + intercept)) ** 2))
