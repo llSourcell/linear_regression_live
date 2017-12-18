@@ -2,7 +2,7 @@
 from numpy import genfromtxt, mean
 
 # reading csv file as an array
-points = genfromtxt("C:\\Users\\saimanoj\\Downloads\\data.csv", delimiter=",")
+points = genfromtxt("data.csv", delimiter=",")
 
 # initialising intercept and slope values as 0
 intercept, slope = 0, 0
