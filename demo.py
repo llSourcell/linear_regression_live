@@ -4,7 +4,7 @@ from numpy import genfromtxt, mean
 # reading csv file as an array
 points = genfromtxt("data.csv", delimiter=",")
 
-# initialising intercept and slope values as 0
+# initializing intercept and slope values as 0
 intercept, slope = 0, 0
 
 # printing initial output values one by one
@@ -33,7 +33,7 @@ for i in range(num_iterations):
     slope += (avg_change * sum(points[:, 0])) * learning_rate
 
 # printing final output values one by one
-print("\nAfter 1000 itterations..,")
+print("\nAfter", num_iterations, "itterations..,")
 print("intercept =", intercept)
 print("slope =", slope)
 print("error =", mean(
