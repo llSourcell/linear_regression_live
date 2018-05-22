@@ -1,5 +1,6 @@
 # linear_regression_live
 This is the code for the "[How to Do Linear Regression the Right Way](youtu.be/uwwWVAgJBcM)" live session by Siraj Raval on Youtube.
+
 Original Git repo here : [llSourcell/linear_regression_demo](github.com/llSourcell/linear_regression_demo)
 
 
