@@ -15,7 +15,7 @@ I've modified his code for better understanding
 * [matplotlib](pypi.org/project/matplotlib) - This is used to plot charts to visualise the trend line
 
 ## Usage
-Just run `python3 demo.py` from the project directory to see the results:
+Just run `demo.py` program from the project directory with any python-3 interpreter to see these results:
 
 #### Initial values :
 ```
