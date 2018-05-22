@@ -40,7 +40,7 @@ print("slope =", slope)
 print("error =", mean(points[:, 1] - (slope * points[:, 0] + intercept))**2)
 
 # plotting a dotter-graph using existing data set
-scatter(points[:, 0], points[:, 0])
+scatter(points[:, 0], points[:, 1])
 
 # plotting a line-graph using predicted data set
 plot(points[:, 0], slope * points[:, 0] + intercept)
