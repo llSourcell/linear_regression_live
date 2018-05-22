@@ -1,6 +1,9 @@
 # genfromtxt will read csv as array & mean will calculate average
 from numpy import genfromtxt, mean
 
+# using matplot for plotting a chart using existing and predected data sets
+from matplotlib.pyplot import plot, scatter, show
+
 # reading csv file as an array
 points = genfromtxt("data.csv", delimiter=",")
 
@@ -11,7 +14,7 @@ intercept, slope = 0, 0
 print("\nInitial values :")
 print("intercept =", intercept)
 print("slope =", slope)
-print("error =", mean((points[:, 1] - (slope * points[:, 0] + intercept)) ** 2))
+print("error =", mean(points[:, 1] - (slope * points[:, 0] + intercept)**2))
 
 # itteration count to 10 times the length of data set
 num_iterations = len(points) * 10
@@ -34,4 +37,13 @@ for i in range(num_iterations):
 print("\nValues After", num_iterations, " itterations :")
 print("intercept =", intercept)
 print("slope =", slope)
-print("error =", mean((points[:, 1] - (slope * points[:, 0] + intercept)) ** 2))
+print("error =", mean(points[:, 1] - (slope * points[:, 0] + intercept))**2)
+
+# plotting a dotter-graph using existing data set
+scatter(points[:, 0], points[:, 0])
+
+# plotting a line-graph using predicted data set
+plot(points[:, 0], slope * points[:, 0] + intercept)
+
+# showing the plotted graph
+show()
