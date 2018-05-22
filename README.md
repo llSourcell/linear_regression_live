@@ -16,14 +16,14 @@ I've modified his code for better understanding
 ## Usage
 Just run `python3 demo.py` from the project directory to see the results:
 
-###Initially..,
+### Initially..,
 ```
 intercept = 0
 slope = 0
 error = 5565.10783449
 ```
 
-###After 1000 itterations..,
+### After 1000 itterations..,
 ```
 intercept = 0.000303453508353
 slope = 1.48565804796
