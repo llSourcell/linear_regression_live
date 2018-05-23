@@ -17,6 +17,9 @@ I've modified his code for better understanding
 ## Usage
 Just run `demo.py` program from the project directory with any python-3 interpreter to see these results:
 
+#### Graphical Visualization :
+![visualize](visualize.png)
+
 #### Initial values :
 ```
 intercept = 0
@@ -30,9 +33,6 @@ intercept = 0.000303453508353
 slope = 1.48565804796
 error = 112.762950378
 ```
-#### Graphical Visualization :
-
-![visualize](visualize.png)
 
 - - - -
 mail me @ nagasai.g9@gmail.com
