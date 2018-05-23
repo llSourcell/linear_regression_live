@@ -30,3 +30,6 @@ intercept = 0.000303453508353
 slope = 1.48565804796
 error = 112.762950378
 ```
+
+---
+mail me @ nagasai.g9@gmail.com
