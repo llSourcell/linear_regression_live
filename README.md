@@ -30,7 +30,7 @@ intercept = 0.000303453508353
 slope = 1.48565804796
 error = 112.762950378
 ```
-#### Graphical visualisation :
+#### Graphical Visualization :
 
 ![visualize](visualize.png)
 
