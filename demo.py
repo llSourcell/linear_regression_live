@@ -1,49 +1,44 @@
-# genfromtxt will read csv as array & mean will calculate average
 from numpy import genfromtxt, mean
-
-# using matplot for plotting a chart using existing and predected data sets
 from matplotlib.pyplot import plot, scatter, show
+from os.path import dirname
 
-# reading csv file as an array
-points = genfromtxt("data.csv", delimiter=",")
 
-# initializing intercept and slope values as 0
-intercept, slope = 0, 0
+def print_values():
+    print("intercept =", b)
+    print("slope =", m)
+    print("error =", error)
+    print("----------")
 
-# printing initial output values one by one
-print("\nInitial values :")
-print("intercept =", intercept)
-print("slope =", slope)
-print("error =", mean(points[:, 1] - (slope * points[:, 0] + intercept)**2))
 
-# itteration count to 10 times the length of data set
-num_iterations = len(points) * 10
+current_dir = dirname(__file__)
+data_set = genfromtxt(current_dir + "/data.csv", delimiter=",")
+x = data_set[:, 0]
+y = data_set[:, 1]
 
-# learning rate to 100th of data set size
-learning_rate = 1 / (num_iterations * 10)
+b = 0
+m = 0
 
-# running the loop for 10x the length of data to generate accurate slope and intercept
+predected_y = m * x + b
+error = mean(y - predected_y)
+
+print_values()
+scatter(x, y)
+
+num_iterations = len(data_set) * 10
+learning_rate = 2 / (num_iterations * 10)
+
 for i in range(num_iterations):
-    # calculating average change in values when compared with predected and actual values
-    avg_change = mean(2 / len(points) * (points[:, 1] - (slope * points[:, 0]) + intercept))
+    predected_y = m * x + b
+    error = mean(y - predected_y)
 
-    # using that average change to adjust intercept
-    intercept += avg_change * learning_rate
+    avg_change = 2 / len(data_set) * error
+    correction = avg_change * learning_rate
 
-    # using that average change to adjust slope
-    slope += (avg_change * sum(points[:, 0])) * learning_rate
+    b += correction
+    m += sum(x) * correction
 
-# printing final output values one by one
-print("\nValues After", num_iterations, " itterations :")
-print("intercept =", intercept)
-print("slope =", slope)
-print("error =", mean(points[:, 1] - (slope * points[:, 0] + intercept))**2)
 
-# plotting a dotter-graph using existing data set
-scatter(points[:, 0], points[:, 1])
+print_values()
+plot(x, m * x + b)
 
-# plotting a line-graph using predicted data set
-plot(points[:, 0], slope * points[:, 0] + intercept)
-
-# showing the plotted graph
 show()
