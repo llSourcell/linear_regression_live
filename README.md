@@ -24,14 +24,14 @@ Just run `demo.py` program from the project directory with any python-3 interpre
 ```
 intercept = 0
 slope = 0
-error = 5565.10783449
+error = 72.7350505539
 ```
 
 #### Values After 1000 itterations :
 ```
-intercept = 0.000303453508353
-slope = 1.48565804796
-error = 112.762950378
+intercept = 0.00030345097633355256
+slope = 1.4856456516193968
+error = 5.186961971048731e-15
 ```
 
 - - - -
