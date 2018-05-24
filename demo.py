@@ -38,7 +38,9 @@ for i in range(num_iterations):
     m += sum(x) * correction
 
 
+predected_y = m * x + b
+
 print_values()
-plot(x, m * x + b)
+plot(x, predected_y)
 
 show()
