@@ -3,57 +3,47 @@ from matplotlib.pyplot import plot, scatter, show
 from os.path import dirname
 
 
-# printing values
-def print_values():
-    print("intercept =", b)
-    print("slope =", m)
-    print("error =", error)
-    print("----------")
-
-
-# reading csv file as a list
 current_dir = dirname(__file__)
 data_set = genfromtxt(current_dir + "/data.csv", delimiter=",")
-x = data_set[:, 0]
-y = data_set[:, 1]
+x_list = data_set[:, 0]
+y_list = data_set[:, 1]
 
-# initializing both intercept b & slope m as 0
 b = 0
 m = 0
 
-# calculating predected values and errors
-predected_y = m * x + b
-error = mean(y - predected_y)
+predected_y = m * x_list + b
+avg_error = mean((y_list - predected_y) ** 2)
 
-# printing & plotting initial values
-print_values()
-scatter(x, y)
+print("initially : ")
+print("intercept =", b)
+print("slope =", m)
+print("error =", avg_error)
+print("----------")
 
-# approximating learning rate
-num_iterations = len(data_set) * 10
-learning_rate = 2 / (num_iterations * 10)
+N = len(x_list)
+num_iterations = N * 100
+learning_rate = 1 / num_iterations
 
-# adjusting slope & intercept values for each iteration
-for i in range(num_iterations):
-    # predecting points & calculating error
-    predected_y = m * x + b
-    error = mean(y - predected_y)
+for _ in range(num_iterations):
+    predected_y = m * x_list + b
+    y_difference = y_list - predected_y
 
-    # calculating correcting value
-    avg_change = 2 / len(data_set) * error
-    correction = avg_change * learning_rate
+    b_gradient = sum(2 / N * y_difference)
+    m_gradient = sum(2 / N * x_list * y_difference)
 
-    # updating intercept & slope values
-    b += correction
-    m += sum(x) * correction
+    b += learning_rate * b_gradient
+    m += learning_rate * m_gradient
 
+predected_y = m * x_list + b
+avg_error = mean((y_list - predected_y) ** 2)
 
-# calculating predected values
-predected_y = m * x + b
+print("finally :")
+print("intercept =", b)
+print("slope =", m)
+print("error =", avg_error)
+print("----------")
 
-# printing & plotting initial values
-print_values()
-plot(x, predected_y)
+scatter(x_list, y_list)
+plot(x_list, predected_y)
 
-# plotting graph
 show()
