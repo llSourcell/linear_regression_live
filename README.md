@@ -15,7 +15,7 @@ I've modified his code for better understanding
 * [matplotlib](http://pypi.org/project/matplotlib) - This is used to plot charts to visualise the trend line
 
 ## Usage
-Just run `demo.py` program from the project directory with any python-3 interpreter to see these results:
+Just run `demo.py` program with any python-3 interpreter. Make sure 'data.csv' is in same path
 
 #### Graphical Visualization :
 ![visualize](visualize.png)
@@ -36,3 +36,4 @@ error = 5.186961971048731e-15
 
 - - - -
 mail me @ nagasai.g9@gmail.com
+making world a better palce with open source
