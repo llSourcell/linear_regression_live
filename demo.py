@@ -1,47 +1,35 @@
 from numpy import genfromtxt, mean
 from matplotlib.pyplot import plot, scatter, show
-from os.path import dirname
 
 
-current_dir = dirname(__file__)
-data_set = genfromtxt(current_dir + "/data.csv", delimiter=",")
+data_set = genfromtxt("data.csv", delimiter=",")
 x_list = data_set[:, 0]
 y_list = data_set[:, 1]
 
-b = 0
-m = 0
+intercept = 0
+slope = 0
 
-predected_y = m * x_list + b
-avg_error = mean((y_list - predected_y) ** 2)
+count = len(x_list)
 
-print("initially : ")
-print("intercept =", b)
-print("slope =", m)
-print("error =", avg_error)
-print("----------")
-
-N = len(x_list)
-num_iterations = N * 100
+num_iterations = count * 100
 learning_rate = 1 / num_iterations
 
 for _ in range(num_iterations):
-    predected_y = m * x_list + b
+    predected_y = slope * x_list + intercept
     y_difference = y_list - predected_y
 
-    b_gradient = sum(2 / N * y_difference)
-    m_gradient = sum(2 / N * x_list * y_difference)
+    intercept_gradient = sum(2 / count * y_difference)
+    slope_gradient = sum(2 / count * x_list * y_difference)
 
-    b += learning_rate * b_gradient
-    m += learning_rate * m_gradient
+    intercept += learning_rate * intercept_gradient
+    slope += learning_rate * slope_gradient
 
-predected_y = m * x_list + b
+predected_y = slope * x_list + intercept
 avg_error = mean((y_list - predected_y) ** 2)
 
-print("finally :")
-print("intercept =", b)
-print("slope =", m)
+print("intercept =", intercept)
+print("slope =", slope)
 print("error =", avg_error)
-print("----------")
 
 scatter(x_list, y_list)
 plot(x_list, predected_y)
