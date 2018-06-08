@@ -1,38 +1,40 @@
 # linear_regression_live
-This is the code for the "How to Do Linear Regression the Right Way" live session by Siraj Raval on Youtube
+This is the code for the "[How to Do Linear Regression the Right Way](https://youtu.be/uwwWVAgJBcM)" live session by Siraj Raval on Youtube.
+
+Siraj's Git repo here : [llSourcell/linear_regression_demo](https://github.com/llSourcell/linear_regression_demo)
 
 
 ## Overview
+Siraj used a small dataset of student test scores and the amount of hours they studied. Intuitively, there must be a relationship right? The more you study, the better your test scores should be. We're going to use [linear regression](http://onlinecourses.science.psu.edu/stat501/node/250) to prove this relationship
 
-This is the code for [this](https://youtu.be/uwwWVAgJBcM) video on Youtube by Siraj Raval. I'm using a small dataset of student test scores and the amount of hours they studied. Intuitively, there must be a relationship right? The more you study, the better your test scores should be. We're going to use [linear regression](https://onlinecourses.science.psu.edu/stat501/node/250) to prove this relationship. 
+I've modified his code for better understanding
 
-Here are some helpful links:
-
-#### Gradient descent visualization
-https://raw.githubusercontent.com/mattnedrich/GradientDescentExample/master/gradient_descent_example.gif
-
-#### Sum of squared distances formula (to calculate our error)
-https://spin.atomicobject.com/wp-content/uploads/linear_regression_error1.png
-
-#### Partial derivative with respect to b and m (to perform gradient descent)
-https://spin.atomicobject.com/wp-content/uploads/linear_regression_gradient1.png
 
 ## Dependencies
-
-* numpy
-
-Python 2 and 3 both work for this. Use [pip](https://pip.pypa.io/en/stable/) to install any dependencies.
+* [numpy](http://pypi.org/project/numpy) - Used to manipulate numerical arrays
+* [matplotlib](http://pypi.org/project/matplotlib) - This is used to plot charts to visualise the trend line
 
 ## Usage
+Just run `demo.py` program with any python-3 interpreter. Make sure 'data.csv' is in same path
 
-Just run ``python3 demo.py`` to see the results:
+#### Graphical Visualization :
+![visualize](visualize.png)
 
-   ```
-Starting gradient descent at b = 0, m = 0, error = 5565.107834483211
-Running...
-After 1000 iterations b = 0.08893651993741346, m = 1.4777440851894448, error = 112.61481011613473
-   ```
+#### Initial values :
+```
+intercept = 0
+slope = 0
+error = 72.7350505539
+```
 
-## Credits
+#### Values After 1000 itterations :
+```
+intercept = 0.00030345097633355256
+slope = 1.4856456516193968
+error = 5.186961971048731e-15
+```
 
-Credits for this code go to [mattnedrich](https://github.com/mattnedrich). I've merely created a wrapper to get people started. 
+- - - -
+mail me @ nagasai.g9@gmail.com
+
+making world a better palce with open source
