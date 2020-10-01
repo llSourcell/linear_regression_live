@@ -1,3 +1,5 @@
+#This is to Explain what Linear Regression is and How it function.
+In statistics, linear regression is a linear approach to modeling the relationship between a scalar response (or dependent variable) and one or more explanatory variables (or independent variables). The case of one explanatory variable is called simple linear regression. For more than one explanatory variable, the process is called multiple linear regression.
 # linear_regression_live
 This is the code for the "How to Do Linear Regression the Right Way" live session by Siraj Raval on Youtube
 
